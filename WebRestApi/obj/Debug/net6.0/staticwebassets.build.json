@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "K/HuOxyVqgQa/0QaZLFZyFINbIU9FdLLzQ3Ri6e3jcA=",
+  "Source": "WebRestApi",
+  "BasePath": "_content/WebRestApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
