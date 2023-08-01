@@ -8,11 +8,11 @@ namespace WebRestApi.Controllers
     [Route("items")]
     public class ItemsController : ControllerBase
     {
-        private readonly InMemItemsRepository _itemsRepository;
+        private readonly IItemsRepository _itemsRepository;
 
-        public ItemsController()
+        public ItemsController(IItemsRepository itemsRepository)
         {
-            _itemsRepository = new InMemItemsRepository();
+            _itemsRepository = itemsRepository;
         }
 
         [HttpGet]
