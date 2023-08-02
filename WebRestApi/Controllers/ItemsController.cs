@@ -34,5 +34,22 @@ namespace WebRestApi.Controllers
             return item.asDto();
         }
 
+        [HttpPost]
+        public ActionResult<ItemDto> CreateItem(CreateDto itemDto)
+        {
+            Item item = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = itemDto.Name,
+                Price = itemDto.Price,
+                CreatedDate = DateTime.Now
+            };
+
+            _itemsRepository.CreateItem(item);
+
+            return CreatedAtAction(nameof(GetItem), new {id = item.Id}, item.asDto());
+
+        }
+
     }
 }

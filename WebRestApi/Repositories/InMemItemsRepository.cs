@@ -1,4 +1,5 @@
-﻿using WebRestApi.Entities;
+﻿using System.Diagnostics.Contracts;
+using WebRestApi.Entities;
 
 namespace WebRestApi.Repositories
 {
@@ -15,5 +16,7 @@ namespace WebRestApi.Repositories
         public IEnumerable<Item> GetItems() => _items;
 
         public Item GetItem(Guid id) => _items.Where(i => i.Id==id).SingleOrDefault();
+
+        public void CreateItem(Item item) => _items.Add(item);
     }
 }
