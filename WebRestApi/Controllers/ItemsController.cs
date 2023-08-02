@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebRestApi.Dtos;
 using WebRestApi.Entities;
 using WebRestApi.Repositories;
 
@@ -16,21 +17,21 @@ namespace WebRestApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<ItemDto> GetItems()
         {
-            var items = _itemsRepository.GetItems();
+            var items = _itemsRepository.GetItems().Select(item => item.asDto());
             return items;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Item> GetItem(Guid id)
+        public ActionResult<ItemDto> GetItem(Guid id)
         {
             var item = _itemsRepository.GetItem(id);
             if (item == null)
             {
                 return NotFound();
             }
-            return item;
+            return item.asDto();
         }
 
     }
