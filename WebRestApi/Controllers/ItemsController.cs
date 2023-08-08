@@ -47,7 +47,7 @@ namespace WebRestApi.Controllers
 
             _itemsRepository.CreateItem(item);
 
-            return CreatedAtAction(nameof(GetItem), new {id = item.Id}, item.asDto());
+            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.asDto());
 
         }
 
@@ -67,6 +67,15 @@ namespace WebRestApi.Controllers
                 Price = itemDto.Price
             };
             _itemsRepository.UpdateItem(updateItem);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteItem(Guid id)
+        {
+
+            _itemsRepository.DeleteItem(id);
 
             return NoContent();
         }

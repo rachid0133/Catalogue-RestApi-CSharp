@@ -24,5 +24,12 @@ namespace WebRestApi.Repositories
             var index = _items.FindIndex(existingItem => existingItem.Id == item.Id);
             _items[index] = item;
         }
+
+        public void DeleteItem(Guid id)
+        {
+            var item = _items.FirstOrDefault(i => i.Id==id);
+
+            _items.Remove(item);
+        }
     }
 }
