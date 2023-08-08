@@ -18,5 +18,11 @@ namespace WebRestApi.Repositories
         public Item GetItem(Guid id) => _items.Where(i => i.Id==id).SingleOrDefault();
 
         public void CreateItem(Item item) => _items.Add(item);
+
+        public void UpdateItem(Item item)
+        {
+            var index = _items.FindIndex(existingItem => existingItem.Id == item.Id);
+            _items[index] = item;
+        }
     }
 }

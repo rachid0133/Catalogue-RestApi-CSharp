@@ -51,5 +51,25 @@ namespace WebRestApi.Controllers
 
         }
 
+        [HttpPut]
+        public ActionResult UpdateItem(Guid id, UpdateDto itemDto)
+        {
+            var existingItem = _itemsRepository.GetItem(id);
+
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
+
+            Item updateItem = existingItem with
+            {
+                Name = itemDto.Name,
+                Price = itemDto.Price
+            };
+            _itemsRepository.UpdateItem(updateItem);
+
+            return NoContent();
+        }
+
     }
 }
